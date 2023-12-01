@@ -29,6 +29,7 @@ jobs:
 
     - name: Install project dependencies
       run: |
+        export LD_LIBRARY_PATH=/path/to/cuda/lib64:$LD_LIBRARY_PATH
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
