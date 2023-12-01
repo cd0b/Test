@@ -1,2 +1,2 @@
 def f():
-    return 5
+    return 4
