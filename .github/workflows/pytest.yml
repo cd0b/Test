@@ -26,9 +26,18 @@ jobs:
         python-version: 3.x
         architecture: x64
 
+    - name: Install miniconda
+      run: |
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda
+        /opt/miniconda/bin/conda init
+        exec bash
+        conda create -n pycudae
+        conda activate pycudae
+        conda install cudatoolkit=12.0 -c pytorch
+
     - name: Install dependencies
       run: |
-        sudo apt install nvidia-cuda-toolkit  
         python -m pip install --upgrade pip
         pip install -r requirements.txt  # Install your project dependencies
 
