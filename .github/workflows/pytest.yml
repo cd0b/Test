@@ -13,25 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: continuumio/miniconda3
+      image: nvidia/cuda:12.0.1-base-ubuntu22.04
+      options: --privileged  # Enable privileged mode to access GPU features
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Python
-      run: |
-        conda install python=3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+        architecture: x64
 
-    - name: Install PyCUDA and Dependencies
+    - name: Install dependencies
       run: |
-        conda install -c conda-forge pycuda
-
-    - name: Install project dependencies
-      run: |
-        export LD_LIBRARY_PATH=/path/to/cuda/lib64:$LD_LIBRARY_PATH
+        sudo apt install nvidia-cuda-toolkit  
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements.txt  # Install your project dependencies
 
     - name: Run tests
       run: |
