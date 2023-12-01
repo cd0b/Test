@@ -1,2 +1,2 @@
 def g():
-    return 4
+    return 5
