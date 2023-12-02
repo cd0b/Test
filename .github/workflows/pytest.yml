@@ -25,8 +25,8 @@ jobs:
     - name: Install Nvidia Driver
       run: |
         sudo apt update
-        sudo apt install ubuntu-drivers
-        sudo ubuntu-drivers-common install
+        sudo apt install ubuntu-drivers-common
+        sudo ubuntu-drivers install
         nvidia-smi
 
     - name: Install Pycuda
