@@ -26,7 +26,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt install ubuntu-drivers
-        sudo ubuntu-drivers install
+        sudo ubuntu-drivers-common install
         nvidia-smi
 
     - name: Install Pycuda
