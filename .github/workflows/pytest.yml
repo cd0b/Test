@@ -21,13 +21,6 @@ jobs:
       with:
         python-version: 3.x
         architecture: x64
-    
-    - name: Install Nvidia Driver
-      run: |
-        sudo apt update
-        sudo apt install ubuntu-drivers-common
-        sudo ubuntu-drivers install
-        nvidia-smi
 
     - name: Install Pycuda
       run: |
